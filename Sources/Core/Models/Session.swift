@@ -276,7 +276,8 @@ import HelperCoders
 	}
 
 	/// The type of session to create.
-	public let type: String = "realtime"
+    /// Valid values are "realtime" or "transcription"
+	public let type: String
 
 	/// Unique identifier for the session
 	public var id: String?
@@ -318,8 +319,9 @@ import HelperCoders
 	/// Tools available to the model.
 	public var tools: [Tool]?
 
-	public init(id: String? = nil, audio: Audio, instructions: String, maxResponseOutputTokens: MaxResponseOutputTokens? = nil, modalities: [Modality]? = nil, model: Model, prompt: Prompt? = nil, temperature: Double? = nil, toolChoice: Tool.Choice? = nil, tools: [Tool]? = nil) {
+    public init(id: String? = nil, type: String, audio: Audio, instructions: String, maxResponseOutputTokens: MaxResponseOutputTokens? = nil, modalities: [Modality]? = nil, model: Model, prompt: Prompt? = nil, temperature: Double? = nil, toolChoice: Tool.Choice? = nil, tools: [Tool]? = nil) {
 		self.id = id
+        self.type = type
 		self.tools = tools
 		self.model = model
 		self.audio = audio
